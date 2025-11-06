@@ -91,9 +91,9 @@ Invisibility-Cloak/
 │
 └── README.md
 
-Demo Video
+Result Img
 
-You can view the demo in the demo folder:
+You can view the demo in the Result File:
 
 demo/demo.mp4
 
@@ -115,4 +115,5 @@ A green-colored cloth
 Author
 
 Manisankar
+
 AI and Data Science Engineer
