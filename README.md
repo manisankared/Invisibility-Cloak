@@ -1,61 +1,118 @@
-Invisibility Cloak (Python OpenCV)
+Invisibility Cloak using Python and OpenCV
 
-A real-time invisibility cloak effect using Python and OpenCV.
-The program detects a specific cloth color and replaces it with the captured background to create a disappearing effect.
+This project implements a real-time invisibility cloak effect using Python and OpenCV.
+The program identifies a specific cloak color and replaces it with the saved background, creating the illusion that the person is invisible.
+
+Overview
+
+The invisibility cloak effect works by capturing the background first, then removing all pixels matching a chosen color (green in this project).
+The removed region is filled with the previously captured background, which creates a seamless transparency effect during live video feed.
+
+This project demonstrates concepts in:
+
+Color detection using HSV
+
+Masking and image segmentation
+
+Real-time video processing
+
+Background modeling
+
+Efficient frame blending
 
 Features
 
-Real-time cloak detection
+Real-time cloak removal
 
-Smooth, stable background blending
+Accurate green mask segmentation
 
-Supports green cloak (best performance)
+Smooth background restoration
 
-Efficient, low-lag processing
+Low-latency processing
 
-Works with any webcam
+Uses an optimized background averaging method
+
+Works on any webcam with no extra hardware
+
+Clean and readable code structure
 
 How It Works
 
-The camera captures a background image with no person in the frame.
+Background Capture
+The system captures multiple empty frames and builds a stable background using a weighted average.
 
-The script identifies the cloak color in HSV.
+Color Detection
+The video frame is converted to HSV space.
+A specific green range is used to detect the cloak.
 
-Masked regions are replaced by the background image.
+Mask Refinement
+Morphological filters clean up noise and small errors.
 
-The result makes the cloak area appear invisible.
+Region Replacement
+All green regions are replaced with the captured background.
 
-Tech Used
+Final Output
+The result appears as if the cloak has disappeared.
 
-Python
+Color Range Used (Green)
+Lower: [40, 50, 70]
+Upper: [90, 255, 255]
 
-OpenCV
 
-NumPy
+These values give high stability and avoid triggering on skin or room objects.
 
-How to Run
+Installation
+
+Install Python 3.8+ and then install the required packages:
+
+pip install opencv-python numpy
+
+Usage
+
+Run the script:
+
 python green_cloak.py
 
 
 Controls:
 
-b capture background
+Press b: Capture background
 
-q quit
+Press q: Quit
 
 Folder Structure
 Invisibility-Cloak/
-    src/
-        green_cloak.py
-    demo/
-        demo.mp4
-    README.md
+│
+├── src/
+│   └── green_cloak.py
+│
+├── demo/
+│   └── demo.mp4
+│
+└── README.md
 
 Demo Video
 
-(Upload your demo.mp4 to the demo folder)
+You can view the demo in the demo folder:
+
+demo/demo.mp4
+
+Why Green Cloth?
+
+Green produces the highest contrast against human skin and typical room environments.
+It gives cleaner masks, less flicker, and smoother edges compared to red or blue.
+
+Requirements
+
+Python
+
+OpenCV
+
+Webcam
+
+A green-colored cloth
 
 Author
 
 Manisankar
-AI & DS Engineer
+AI and Data Science Engineer
